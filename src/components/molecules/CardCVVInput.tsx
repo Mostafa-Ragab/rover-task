@@ -20,7 +20,7 @@ export const CardCVVInput = ({ value, onChange, onFocus, onBlur, hasError }: Car
       onChange={onChange}
       onFocus={onFocus}
       onBlur={onBlur}
-      className={`bg-gray-900 border-gray-800 text-white ${hasError && value ? 'border-red-500' : ''}`}
+      className={`bg-placeholder border-gray-800 text-white ${hasError && value ? 'border-red-500' : ''}`}
       maxLength={3}
     />
   </div>

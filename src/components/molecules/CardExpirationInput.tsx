@@ -17,7 +17,7 @@ export const CardExpirationInput = ({ value, onChange, hasError }: CardExpiratio
       value={value}
       maxLength={5}
       onChange={onChange}
-      className={`bg-gray-900 border-gray-800 text-white ${hasError && value ? 'border-red-500' : ''}`}
+      className={`bg-placeholder border-gray-800 text-white ${hasError && value ? 'border-red-500' : ''}`}
     />
   </div>
 );

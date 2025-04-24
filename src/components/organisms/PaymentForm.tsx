@@ -50,13 +50,17 @@ export const PaymentForm = () => {
         </div>
         
         <div className="flex justify-center mt-6">
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!isFormValid()}
-            className={`rounded-full px-8 transition-all ${isFormValid() ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-600 text-gray-400 cursor-not-allowed'}`}
-          >
-            Continue
-          </Button>
+        <Button
+    onClick={handleSubmit}
+    disabled={!isFormValid()}
+    className={`rounded-full px-10 h-12 w-28 text-sm font-medium transition-all bg-gradient-to-b from-[#161616] to-[#67666666] text-white cursor-not-allowed ${
+      isFormValid()
+        ? ''
+        : 'bg-gradient-to-b from-[#161616] to-[#67666666] text-white cursor-not-allowed'
+    }`}
+  >
+    Continue
+  </Button>
         </div>
         
       </div>

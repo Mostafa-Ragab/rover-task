@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 import { validateCardNumber, validateExpiration, validateCVV } from '@/lib/validation';
 
@@ -47,7 +46,7 @@ export const PaymentFormProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   const formatExpiration = (value: string) => {
-    const digitsOnly = value.replace(/\D/g, '');
+    const digitsOnly = value.replace(/\D/g, '').slice(0, 4);
     if (digitsOnly.length >= 3) {
       return `${digitsOnly.slice(0, 2)}/${digitsOnly.slice(2, 4)}`;
     } else if (digitsOnly.length === 2) {
@@ -65,7 +64,11 @@ export const PaymentFormProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const handleExpirationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatExpiration(e.target.value);
     setExpiration(formatted);
-    setFormErrors(prev => ({ ...prev, expiration: !validateExpiration(formatted) }));
+    const isValid = validateExpiration(formatted);
+    setFormErrors(prev => ({ ...prev, expiration: !isValid }));
+    if (!isValid) {
+      console.warn("Invalid expiration date format. Please use MM/YY");
+    }
   };
 
   const handleCVVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
